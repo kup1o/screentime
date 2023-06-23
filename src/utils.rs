@@ -21,12 +21,12 @@ pub fn get_today_as_str() -> String {
 
 pub fn get_focused_program_name() -> String {
     if let Ok(window) = get_active_window() {
-        let process_name = window.process_name.to_lowercase();
+        let app_name = window.app_name.to_lowercase();
         let title = window.title;
         if title.to_lowercase().starts_with("vim") || title.to_lowercase().starts_with("nvim") {
             title.split(" ").nth(0).unwrap().to_string()
         } else {
-            process_name
+            app_name
         }
     } else {
         "unknown".to_string()
